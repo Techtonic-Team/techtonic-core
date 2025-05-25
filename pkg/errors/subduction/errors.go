@@ -12,7 +12,16 @@ type TechtonicError struct {
 }
 
 func Wrap(err error, msg string) error {
-	stack := make([]string, 0)
+	const maxStackDepth = 50
+	stack := make([]string, 0, maxStackDepth)
+	for i := 1; i < maxStackDepth; i++ {
+		pc, file, line, ok := runtime.Caller(i)
+		if !ok {
+			break
+		}
+		fn := runtime.FuncForPC(pc).Name()
+		stack = append(stack, fmt.Sprintf("%s:%d %s", file, line, fn))
+	}
 	for i := 1; ; i++ {
 		pc, file, line, ok := runtime.Caller(i)
 		if !ok {

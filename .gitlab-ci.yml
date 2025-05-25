@@ -1,0 +1,31 @@
+image: golang:1.22.2
+
+stages:
+  - test
+  - lint
+  - coverage
+
+variables:
+  GO111MODULE: "on"
+  GOPROXY: "https://proxy.golang.org"
+
+test:
+  stage: test
+  script:
+    - go test -v -coverprofile=coverage.txt ./...
+  artifacts:
+    paths:
+      - coverage.txt
+
+lint:
+  stage: lint
+  script:
+    - golangci-lint run ./... --timeout 5m
+
+coverage:
+  stage: coverage
+  script:
+    - go tool cover -html=coverage.txt -o coverage.html
+  artifacts:
+    paths:
+      - coverage.html

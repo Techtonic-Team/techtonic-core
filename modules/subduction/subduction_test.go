@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	subduction "gitlab.com/techtonic-team/tdk/techtonic-core/pkg/subduction"
+	subduction "gitlab.com/techtonic-team/tdk/techtonic-core/modules/subduction"
 )
 
 func TestWrapError(t *testing.T) {

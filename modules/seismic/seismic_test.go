@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"gitlab.com/techtonic-team/tdk/techtonic-core/pkg/logging/seismic"
+	"gitlab.com/techtonic-team/tdk/techtonic-core/modules/seismic"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

@@ -9,7 +9,7 @@ import (
 	"gitlab.com/techtonic-team/tdk/techtonic-core/pkg/errors/subduction"
 )
 
-func TestError(t *testing.T) {
+func TestWrapError(t *testing.T) {
 	err := fmt.Errorf("file not found")
 	wrapped := subduction.Wrap(err, "config load failed")
 
